@@ -1,0 +1,65 @@
+import java.util.Scanner;
+import java.math.BigDecimal;
+
+public class Pool {
+	
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner (System.in);
+		
+		double length, width, depth, fillRate ;
+		
+		
+		System.out.println("=======================================");
+		System.out.println("Activity 2.2");
+		System.out.println("Program by: Camille Ann M. Marca");
+		System.out.println("BSIT 2-1");
+		System.out.println("=======================================\n");
+
+		
+		System.out.println("Enter the Length of the Pool (in feet): ");
+		length = scan.nextDouble();
+		System.out.println("Enter the Width of the Pool (in feet): ");
+		width = scan.nextDouble();
+		System.out.println("Enter the Depth of the Pool (in feet): ");
+		depth = scan.nextDouble();
+		
+		System.out.println("Enter the fill rate of the pool (in gallons per minute): ");
+		fillRate = scan.nextDouble();
+		
+		poolCap (length, width, depth, fillRate);
+		
+
+	scan.close();	
+	}
+	
+	static void poolCap (double lngth, double wdth, double dpth, double rate)
+	{
+		double volume, capacity;
+		
+		volume = lngth * wdth * dpth;
+		capacity = volume * 7.48;
+		
+		fillTime (capacity, rate);
+	}
+	
+	static double fillTime (double a, double b) 
+	{
+		double time = a, gallons = b;
+		double fill, hours;
+		int value, minutes;
+		
+		fill = (time / gallons + 0.5);
+		hours = (fill / 60);
+		int mins = (int) hours;
+		minutes = (int) ((hours - mins) * 60);
+		
+		BigDecimal hour = new BigDecimal(String.valueOf(hours));
+		value = hour.intValue();
+		
+		System.out.println("\nThe time it takes to fill the pool is approximately: " + value + " hour(s) and " + minutes + " minute(s)");
+		
+		return 0;
+	}
+	
+}
